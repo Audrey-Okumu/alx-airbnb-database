@@ -22,7 +22,7 @@ Relationships:
 
 ## ER Diagram
 
-![Airbnb ER Diagram](airbnb_erd.png)
+You can view the interactive ER diagram [here on dbdiagram.io](https://dbdiagram.io/d/64f0d3f3a8c1e1234567890)
 
 
 
