@@ -32,13 +32,13 @@ Use Case:
 
 Purpose:
 
-Retrieves all properties and their reviews.
+-Retrieves all properties and their reviews.
 
-Properties without reviews still appear; review columns will show NULL.
+-Properties without reviews still appear; review columns will show NULL.
 
 Use Case:
 
-Identify properties that have no reviews yet.
+-Identify properties that have no reviews yet.
 
 
 ### 3. FULL OUTER JOIN – Users and Bookings
