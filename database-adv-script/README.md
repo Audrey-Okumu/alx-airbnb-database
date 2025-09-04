@@ -17,38 +17,59 @@ The goal is to combine data from multiple tables to retrieve meaningful insights
 
 ### 1. INNER JOIN – Bookings and Users
 
-Purpose:
+**Purpose:**
 
--Retrieves all bookings along with the users who made them.
+- Retrieves all bookings along with the users who made them.  
+- Only rows where both booking and user exist are returned.
 
--Only rows where both booking and user exist are returned.
+**Use Case:**
 
-Use Case:
+- See exactly which user booked which property.
 
--See exactly which user booked which property.
-
+---
 
 ### 2. LEFT JOIN – Properties and Reviews
 
-Purpose:
+**Purpose:**
 
--Retrieves all properties and their reviews.
+- Retrieves all properties and their reviews.  
+- Properties without reviews still appear; review columns will show `NULL`.
 
--Properties without reviews still appear; review columns will show NULL.
+**Use Case:**
 
-Use Case:
+- Identify properties that have no reviews yet.
 
--Identify properties that have no reviews yet.
-
+---
 
 ### 3. FULL OUTER JOIN – Users and Bookings
 
-Purpose:
+**Purpose:**
 
--Retrieves all users and all bookings, even if no match exists.
+- Retrieves all users and all bookings, even if no match exists.  
+- Users with no bookings or bookings with no linked user still appear.
 
--Users with no bookings or bookings with no linked user still appear.
+**Use Case:**
 
-Use Case:
+- Complete overview of users and bookings, useful for reporting or debugging.
 
--Complete overview of users and bookings, useful for reporting or debugging.
+---
+
+## Key Concepts
+
+| Concept | Meaning |
+|---------|---------|
+| INNER JOIN | Returns only rows where both tables have matching data |
+| LEFT JOIN | Returns all rows from the left table; unmatched right table rows = NULL |
+| FULL OUTER JOIN | Returns all rows from both tables; unmatched rows in either table = NULL |
+| Aliases (e.g., `b`, `u`, `p`, `r`) | Short names for tables to make queries easier to read |
+| ON clause | Defines how rows from two tables are matched |
+
+---
+
+## How to Run
+
+1. Make sure the database `alx_airbnb` exists and is populated with sample data from `seed.sql`.  
+2. Open Command Prompt and connect to PostgreSQL:
+
+```cmd
+"C:\Program Files\PostgreSQL\17\bin\psql.exe" -U postgres -d alx_airbnb
