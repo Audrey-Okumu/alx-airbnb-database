@@ -1,9 +1,9 @@
 -- ===================================================
 -- perfomance.sql
--- Initial and optimized query for complex joins
+-- Initial and optimized query for complex joins with WHERE/AND
 -- ===================================================
 
--- 1. Initial Query: Retrieve all bookings with user, property, and payment details
+-- 1. Initial Query: Retrieve all upcoming bookings for user 'u1' with full details
 EXPLAIN ANALYZE
 SELECT 
     b.booking_id,
@@ -26,10 +26,12 @@ FROM bookings b
 JOIN users u ON b.user_id = u.user_id
 JOIN properties p ON b.property_id = p.property_id
 LEFT JOIN payments pay ON b.booking_id = pay.booking_id
-ORDER BY b.booking_id;
+WHERE b.start_date >= CURRENT_DATE
+  AND u.role = 'guest'
+ORDER BY b.start_date;
 
 -- ===================================================
--- 2. Optimized Query: Reduce unnecessary joins & improve performance
+-- 2. Optimized Query: Reduce unnecessary joins/columns
 -- ===================================================
 
 EXPLAIN ANALYZE
@@ -50,5 +52,6 @@ FROM bookings b
 JOIN users u ON b.user_id = u.user_id
 JOIN properties p ON b.property_id = p.property_id
 LEFT JOIN payments pay ON b.booking_id = pay.booking_id
--- Removed unnecessary columns like p.location and u.email for faster performance
-ORDER BY b.booking_id;
+WHERE b.start_date >= CURRENT_DATE
+  AND u.role = 'guest'
+ORDER BY b.start_date;
