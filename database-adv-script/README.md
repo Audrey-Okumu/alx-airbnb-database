@@ -17,40 +17,38 @@ The goal is to combine data from multiple tables to retrieve meaningful insights
 
 ### 1. INNER JOIN – Bookings and Users
 
-```sql
-SELECT 
-    b.booking_id,
-    b.start_date,
-    b.end_date,
-    b.total_price,
-    b.status,
-    u.user_id,
-    u.first_name,
-    u.last_name,
-    u.email
-FROM bookings b
-INNER JOIN users u
-ON b.user_id = u.user_id;
+Purpose:
 
-SELECT 
-    p.property_id,
-    p.name AS property_name,
-    r.review_id,
-    r.rating,
-    r.comment
-FROM properties p
-LEFT JOIN reviews r
-ON p.property_id = r.property_id;
+-Retrieves all bookings along with the users who made them.
 
-SELECT 
-    u.user_id,
-    u.first_name,
-    u.last_name,
-    b.booking_id,
-    b.property_id,
-    b.start_date,
-    b.end_date,
-    b.total_price
-FROM users u
-FULL OUTER JOIN bookings b
-ON u.user_id = b.user_id;
+-Only rows where both booking and user exist are returned.
+
+Use Case:
+
+-See exactly which user booked which property.
+
+
+### 2. LEFT JOIN – Properties and Reviews
+
+Purpose:
+
+Retrieves all properties and their reviews.
+
+Properties without reviews still appear; review columns will show NULL.
+
+Use Case:
+
+Identify properties that have no reviews yet.
+
+
+### 3. FULL OUTER JOIN – Users and Bookings
+
+Purpose:
+
+-Retrieves all users and all bookings, even if no match exists.
+
+-Users with no bookings or bookings with no linked user still appear.
+
+Use Case:
+
+-Complete overview of users and bookings, useful for reporting or debugging.
