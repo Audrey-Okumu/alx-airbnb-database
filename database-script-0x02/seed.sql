@@ -1,36 +1,36 @@
--- Insert Users
-INSERT INTO User (user_id, first_name, last_name, email, password_hash, phone_number, role, created_at)
+--  Users
+INSERT INTO users (first_name, last_name, email, password_hash, phone_number, role)
 VALUES
-  ('u1', 'Alice', 'Johnson', 'alice@example.com', 'hashed_password1', '1234567890', 'guest', NOW()),
-  ('u2', 'Bob', 'Smith', 'bob@example.com', 'hashed_password2', '9876543210', 'host', NOW()),
-  ('u3', 'Charlie', 'Brown', 'charlie@example.com', 'hashed_password3', NULL, 'admin', NOW());
+  ('Alice', 'Johnson', 'alice@example.com', 'hashed_password1', '1234567890', 'guest'),
+  ('Bob', 'Smith', 'bob@example.com', 'hashed_password2', '9876543210', 'host'),
+  ('Charlie', 'Brown', 'charlie@example.com', 'hashed_password3', NULL, 'admin');
 
--- Insert Properties
-INSERT INTO Property (property_id, host_id, name, description, location, pricepernight, created_at, updated_at)
+--  Properties
+INSERT INTO properties (host_id, name, description, location, price_per_night)
 VALUES
-  ('p1', 'u2', 'Cozy Apartment', 'A nice 2-bedroom apartment in the city center.', 'Nairobi', 50.00, NOW(), NOW()),
-  ('p2', 'u2', 'Beach House', 'Beautiful house by the ocean.', 'Mombasa', 120.00, NOW(), NOW());
+  (2, 'Cozy Apartment', 'A nice 2-bedroom apartment in the city center.', 'Nairobi', 50.00),
+  (2, 'Beach House', 'Beautiful house by the ocean.', 'Mombasa', 120.00);
 
--- Insert Bookings
-INSERT INTO Booking (booking_id, property_id, user_id, start_date, end_date, total_price, status, created_at)
+--  Bookings
+INSERT INTO bookings (property_id, user_id, start_date, end_date, total_price, status)
 VALUES
-  ('b1', 'p1', 'u1', '2025-09-01', '2025-09-05', 200.00, 'confirmed', NOW()),
-  ('b2', 'p2', 'u1', '2025-12-15', '2025-12-20', 600.00, 'pending', NOW());
+  (1, 1, '2025-09-01', '2025-09-05', 200.00, 'confirmed'),
+  (2, 1, '2025-12-15', '2025-12-20', 600.00, 'pending');
 
--- Insert Payments
-INSERT INTO Payment (payment_id, booking_id, amount, payment_date, payment_method)
+--  Payments
+INSERT INTO payments (booking_id, amount, payment_method)
 VALUES
-  ('pay1', 'b1', 200.00, NOW(), 'credit_card'),
-  ('pay2', 'b2', 600.00, NOW(), 'paypal');
+  (1, 200.00, 'credit_card'),
+  (2, 600.00, 'paypal');
 
--- Insert Reviews
-INSERT INTO Review (review_id, property_id, user_id, rating, comment, created_at)
+--  Reviews
+INSERT INTO reviews (property_id, user_id, rating, comment)
 VALUES
-  ('r1', 'p1', 'u1', 5, 'Amazing place, very clean!', NOW()),
-  ('r2', 'p2', 'u1', 4, 'Great location but a bit noisy.', NOW());
+  (1, 1, 5, 'Amazing place, very clean!'),
+  (2, 1, 4, 'Great location but a bit noisy.');
 
--- Insert Messages
-INSERT INTO Message (message_id, sender_id, recipient_id, message_body, sent_at)
+--  Messages
+INSERT INTO messages (sender_id, recipient_id, message_body)
 VALUES
-  ('m1', 'u1', 'u2', 'Hi, is the apartment available for next week?', NOW()),
-  ('m2', 'u2', 'u1', 'Yes, it is available. Looking forward to hosting you!', NOW());
+  (1, 2, 'Hi, is the apartment available for next week?'),
+  (2, 1, 'Yes, it is available. Looking forward to hosting you!');
