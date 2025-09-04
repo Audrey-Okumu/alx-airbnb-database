@@ -16,4 +16,5 @@ This folder contains SQL scripts to populate the Airbnb database with **sample d
 2. Run the following command in your SQL client:
 
 ```bash
-mysql -u username -p alx_airbnb < seed.sql
+psql -U username -d database_name -f seed_postgres.sql
+
