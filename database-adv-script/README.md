@@ -66,16 +66,6 @@ The goal is to combine data from multiple tables to retrieve meaningful insights
 
 ---
 
-## How to Run
-
-1. Make sure the database `alx_airbnb` exists and is populated with sample data from `seed.sql`.  
-2. Open Command Prompt and connect to PostgreSQL:
-
-```cmd
-"C:\Program Files\PostgreSQL\17\bin\psql.exe" -U postgres -d alx_airbnb
-
----
-
 # SQL Subqueries – alx_airbnb Database
 
 ## Objective
