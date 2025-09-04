@@ -1,4 +1,4 @@
-# Database Advanced Scripts – SQL Joins
+# SQL Joins - alx_irbnb Database
 
 ## Objective
 
@@ -119,12 +119,72 @@ The goal is to filter and analyze data using nested queries.
 
 ---
 
-## How to Run
+# SQL Aggregations and Window Functions – alx_airbnb Database
 
-1. Ensure your `alx_airbnb` database is populated with sample data from `seed.sql`.  
+## Objective
 
-2. Open Command Prompt and connect to PostgreSQL:
+This script contains SQL queries to practice **aggregations** and **window functions** on the `alx_airbnb` database.  
+You will analyze data using COUNT, GROUP BY, and ranking functions (RANK, ROW_NUMBER).
 
-```cmd
-"C:\Program Files\PostgreSQL\17\bin\psql.exe" -U postgres -d alx_airbnb
+---
+
+## File
+
+- **aggregations_and_window_functions.sql** – Contains all queries for aggregations and window functions exercises.  
+
+---
+
+## Queries Included
+
+### 1. Total Number of Bookings Per User (Aggregation)
+
+**Purpose:**  
+- Calculate the total number of bookings made by each user.  
+
+**Explanation:**  
+- `COUNT()` counts the number of bookings.  
+- `GROUP BY` ensures the results are per user.  
+- `LEFT JOIN` ensures users without bookings are included.  
+
+**Example Output:**  
+
+| user_id | first_name | last_name | total_bookings |
+|---------|------------|-----------|----------------|
+| u1      | Alice      | Johnson   | 5              |
+| u2      | Bob        | Smith     | 3              |
+
+---
+
+### 2. Rank Properties by Total Bookings (Window Function)
+
+**Purpose:**  
+- Rank properties based on the total number of bookings they received.  
+
+**Explanation:**  
+- `RANK() OVER (ORDER BY COUNT(b.booking_id) DESC)` assigns ranks based on booking count.  
+- Properties with the same number of bookings share the same rank.  
+- `GROUP BY` is needed to count bookings per property first.  
+
+**Example Output:**  
+
+| property_id | property_name | total_bookings | property_rank |
+|-------------|---------------|----------------|---------------|
+| p2          | Beach House   | 10             | 1             |
+| p1          | Cozy Apartment| 8              | 2             |
+
+---
+
+## Key Concepts
+
+| Concept | Meaning |
+|---------|---------|
+| COUNT() | Counts rows or non-null values |
+| GROUP BY | Groups rows for aggregation |
+| LEFT JOIN | Includes unmatched rows from the left table |
+| Window Function | Performs calculation across a set of rows related to current row |
+| RANK() | Assigns rank based on order; ties get same rank |
+| ROW_NUMBER() | Assigns unique sequential number per row |
+
+---
+
 
