@@ -73,3 +73,68 @@ The goal is to combine data from multiple tables to retrieve meaningful insights
 
 ```cmd
 "C:\Program Files\PostgreSQL\17\bin\psql.exe" -U postgres -d alx_airbnb
+
+---
+
+# SQL Subqueries – alx_airbnb Database
+
+## Objective
+
+This script contains **SQL subqueries** to practice both **correlated** and **non-correlated subqueries** on the `alx_airbnb` database.  
+The goal is to filter and analyze data using nested queries.
+
+---
+
+## File
+
+- **subqueries.sql** – Contains all subquery exercises.  
+
+---
+
+## Queries Included
+
+### 1. Non-Correlated Subquery – Properties with Average Rating > 4.0
+
+**Purpose:**  
+- Retrieve all properties where the **average rating** is greater than 4.0.
+
+**Explanation:**  
+- The inner query calculates the average rating for each property.  
+- The outer query fetches the full property details for those property IDs.  
+
+---
+
+### 2. Correlated Subquery – Users with More Than 3 Bookings
+
+**Purpose:**  
+- Retrieve all users who have made more than 3 bookings.  
+
+**Explanation:**  
+- The inner query counts bookings for each user.  
+- It is correlated because it **depends on the outer query’s user_id**.  
+- Only users meeting the condition are returned.  
+
+---
+
+## Key Concepts
+
+| Concept | Meaning |
+|---------|---------|
+| Subquery | A query inside another query |
+| Non-Correlated Subquery | Runs independently of the outer query |
+| Correlated Subquery | Runs for each row of the outer query |
+| IN clause | Matches a column against a list of values from a subquery |
+| COUNT() | Counts rows meeting a condition |
+| AVG() | Calculates the average of a numeric column |
+
+---
+
+## How to Run
+
+1. Ensure your `alx_airbnb` database is populated with sample data from `seed.sql`.  
+
+2. Open Command Prompt and connect to PostgreSQL:
+
+```cmd
+"C:\Program Files\PostgreSQL\17\bin\psql.exe" -U postgres -d alx_airbnb
+
